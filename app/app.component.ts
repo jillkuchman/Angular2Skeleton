@@ -9,6 +9,7 @@ import { Task } from './task.model';
     <pies></pies>
     <task-list [childTaskList]="masterTaskList" (clickSender)="showDetails($event)"></task-list>
     <edit-task [childSelectedTask]="selectedTask" (doneClickedSender)="finishedEditing()"></edit-task>
+    <new-task (newTaskSender)="addTask($event)"></new-task>
   </div>
   `
 })
@@ -26,5 +27,8 @@ new Task("Do the laundry.", 3)
   }
   finishedEditing(){
     this.selectedTask = null;
+  }
+  addTask(newTaskFromChild: Task){
+    this.masterTaskList.push(newTaskFromChild);
   }
 }

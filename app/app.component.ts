@@ -5,11 +5,18 @@ import { Component } from '@angular/core';
   template: `
   <div class="container">
     <h1>My First Angular 2 App</h1>
-    <h3 (click)="showDetails(currentTask)" *ngFor="let currentTask of tasks">{{currentTask.description}}</h3>
+    <div *ngFor="let currentTask of tasks">
+      <h3>{{currentTask.description}}</h3>
+      <button (click)="showDetails(currentTask)">Edit</button>
+    </div>
+    <h1>Edit task</h1>
     <div>
-      <h1>Edit task</h1>
-      <p>Description: {{selectedTask.description}}</p>
-      <p>Task ID: {{selectedTask.id}}</p>
+      <label>Enter task description:</label>
+      <input [(ngModel)]="selectedTask.description">
+    </div>
+    <div>
+      <label>Enter Task ID:</label>
+      <input [(ngModel)]="selectedTask.id">
     </div>
   </div>
   `
